@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Store\StoreController;
 use App\Http\Controllers\Api\User\Auth\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
@@ -21,3 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('register', [RegisterController::class, 'register']);
+Route::group(['middleware' => ['auth:api', 'verified']], function () {
+    Route::post('store', [StoreController::class, 'store']);
+    Route::get('store/{store}', [StoreController::class, 'show']);
+    Route::put('store/{store}', [StoreController::class, 'update']);
+});

@@ -11,12 +11,6 @@ class StorePolicy
 {
     use HandlesAuthorization;
 
-    public function before(User $user, $ability)
-    {
-        if ($user->roles->first()->name === UserRole::MERCHANT) {
-            return true;
-        }
-    }
     /**
      * Determine whether the user can view any models.
      *
@@ -37,7 +31,7 @@ class StorePolicy
      */
     public function view(User $user, Store $store)
     {
-        //
+        return $user->roles->first()->name === UserRole::MERCHANT;
     }
 
     /**
@@ -48,7 +42,7 @@ class StorePolicy
      */
     public function create(User $user)
     {
-        //    
+        return $user->roles->first()->name === UserRole::MERCHANT;  
     }
 
     /**
@@ -60,7 +54,7 @@ class StorePolicy
      */
     public function update(User $user, Store $store)
     {
-        //
+        return $user->id == $store->user_id;
     }
 
     /**
