@@ -15,7 +15,7 @@ class EloquentProductRepository implements ProductRepositoryInterface
 
     public function show($id)
     {
-        return Product::findOrFail($id);
+        return $this->findOrFail($id);
     }
 
     public function update($id, $attributes)
@@ -23,5 +23,10 @@ class EloquentProductRepository implements ProductRepositoryInterface
         $product = Product::query()->findOrFail($id);
         $product->fill($attributes)->save();
         return $product;
+    }
+
+    public function findOrFail(int $id)
+    {
+        return Product::findOrFail($id);
     }
 }
