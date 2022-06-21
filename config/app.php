@@ -177,7 +177,8 @@ return [
         ECommerce\User\Providers\UserServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         ECommerce\Store\Providers\StoreServiceProvider::class,
-        ECommerce\Product\Providers\ProductServiceProvider::class
+        ECommerce\Product\Providers\ProductServiceProvider::class,
+        ECommerce\Order\Providers\OrderServiceProvider::class
     ],
 
     /*

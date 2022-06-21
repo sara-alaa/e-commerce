@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Order\OrderController;
 use App\Http\Controllers\Api\Store\ProductController;
 use App\Http\Controllers\Api\Store\StoreController;
 use App\Http\Controllers\Api\User\Auth\RegisterController;
@@ -30,4 +31,5 @@ Route::group(['middleware' => ['auth:api', 'verified']], function () {
     Route::put('store/{store}', [StoreController::class, 'update']);
     Route::post('product', [ProductController::class, 'store']);
     Route::put('product/{product}', [ProductController::class, 'update']);
+    Route::post('order', [OrderController::class, 'store']);
 });
