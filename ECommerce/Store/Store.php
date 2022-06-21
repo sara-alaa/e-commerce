@@ -2,6 +2,8 @@
 
 namespace ECommerce\Store;
 
+use App\Models\User;
+use ECommerce\Product\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
@@ -17,4 +19,14 @@ class Store extends Model
         'shipping_cost',
         'user_id',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
