@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Policies\OrderPolicy;
 use App\Policies\ProductPolicy;
 use App\Policies\StorePolicy;
+use ECommerce\Order\Order;
 use ECommerce\Product\Product;
 use ECommerce\Store\Store;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -20,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Store::class => StorePolicy::class,
         Product::class => ProductPolicy::class,
+        Order::class => OrderPolicy::class,
     ];
 
     /**
