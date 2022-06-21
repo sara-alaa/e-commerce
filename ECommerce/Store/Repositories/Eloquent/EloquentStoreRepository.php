@@ -24,4 +24,9 @@ class EloquentStoreRepository implements StoreRepositoryInterface
         $store->fill($attributes)->save();
         return $store;
     }
+
+    public function getStoresByIds($ids)
+    {
+        return Store::whereIn('id', $ids)->get();
+    }
 }
