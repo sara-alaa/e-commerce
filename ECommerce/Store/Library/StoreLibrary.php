@@ -49,11 +49,4 @@ class StoreLibrary
         $this->storeValidator->updateValidate($attributes, $id);
         return $attributes;
     }
-
-    protected function getFillableAttributesForCreate()
-    {
-        return [
-            'name', 'vat_include', 'shipping_cost'
-        ];
-    }
 }
